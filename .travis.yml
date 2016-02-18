@@ -1,0 +1,25 @@
+sudo: false
+language: cpp
+compiler:
+  - clang++
+  - g++
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-precise-3.7
+      - llvm-toolchain-precise
+    packages:
+      - clang-3.7
+      - g++-5
+      - gcc-5
+
+install:
+  - if [ "$CXX" = "g++" ];     then CXX="g++-5"       CC="gcc-5"     ; fi
+  - if [ "$CXX" = "clang++" ]; then CXX="clang++-3.7" CC="clang-3.7" ; fi
+  - ./waf configure
+  - ./waf clean build --notests
+
+script:
+  - ./waf build --alltests
