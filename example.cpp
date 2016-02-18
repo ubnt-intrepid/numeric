@@ -3,7 +3,10 @@
 
 int main(int argc, char const* argv[])
 {
-  numeric::vector<float> x{0, 1, 2}, y{-1, -1, -1}, z{0, 2, 3};
-  numeric::vector<float> t = x + y - z;
-  std::cout << t << std::endl;
+  numeric::vector<float> x{0, 1, 2};
+  numeric::vector<float> y{-1, -1, -1};
+  numeric::vector<float> z{0, 2, 3};
+
+  auto t = x + y - z;
+  std::cout << static_cast<numeric::vector<float>>(t) << std::endl;
 }
